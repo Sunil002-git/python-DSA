@@ -80,3 +80,8 @@ else:
             max_val = arr[i]
     print(max_val)
 # 💡 Interviewers LOVE when you mention edge cases.
+
+#Pattern: Simple traversal
+# When: Need to visit all elements
+# Template: for i in range(len(arr))
+# Mistake: Using nested loops unnecessarily
