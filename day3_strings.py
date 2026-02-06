@@ -136,3 +136,102 @@ if s2 in (s1 + s2):
     print(True)
 else:
     print(False)
+
+#Interview Questions
+# 1️⃣ Why can’t we modify a string directly?
+
+# Because strings in Python are immutable.
+
+# That means:
+
+# Once a string is created, it cannot be changed in place
+
+# Any “modification” actually creates a new string
+# s = "hello"
+# s[0] = "H"   # ❌ Error
+
+# 2️⃣ Time complexity of palindrome check?
+
+# For the palindrome logic we used:
+
+# for i in range(len(s)//2):
+#     if s[i] != s[-i-1]:
+#         return False
+
+
+# We check half of the string
+
+# Each comparison is O(1)
+
+# So:
+
+# Time Complexity: O(n)
+
+# Space Complexity: O(1) (no extra memory)
+
+# 💬 Interview answer:
+
+# “Palindrome check takes O(n) time and constant space.”
+# 3️⃣ Difference between iterating a string vs a list?
+# Similarity:
+
+# Both are iterable
+
+# Both support indexing and loops
+
+# Key Differences:
+# Aspect	String	List
+# Mutability	❌ Immutable	✅ Mutable
+# Modify element	❌ Not allowed	✅ Allowed
+# Use case	Text processing	Data storage
+
+# Example:
+
+# lst = [1, 2, 3]
+# lst[0] = 10   # ✅ works
+
+# s = "abc"
+# s[0] = "x"    # ❌ error
+
+
+# 💬 Interview answer:
+
+# “Iteration is similar, but strings are immutable while lists are mutable.”
+
+# 4️⃣ Can we solve palindrome using two pointers?
+
+# YES — and this is a strong interview approach.
+
+# 🧠 Idea:
+
+# One pointer at start
+
+# One pointer at end
+
+# Move inward
+
+# 🧪 Python Code:
+# s = "madam"
+
+# left = 0
+# right = len(s) - 1
+# is_palindrome = True
+
+# while left < right:
+#     if s[left] != s[right]:
+#         is_palindrome = False
+#         break
+#     left += 1
+#     right -= 1
+
+# print(is_palindrome)
+
+# Complexity:
+
+# Time: O(n)
+
+# Space: O(1)
+
+# 💬 Interview answer:
+
+# “Yes, using two pointers starting from both ends and moving inward.”
