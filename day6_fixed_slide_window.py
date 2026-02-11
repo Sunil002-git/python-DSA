@@ -22,7 +22,7 @@ for i in range(k, len(arr)):
     max_sum = max(window_sum, max_sum)
 print(max_sum)
 
-# Average oa All SubArrays of Size K
+# Average of All SubArrays of Size K
 arr = [1, 3, 2, 6, -1, 4, 1, 8, 2]
 k = 5
 window_sum = sum(arr[:k])
