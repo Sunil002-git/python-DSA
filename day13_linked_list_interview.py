@@ -146,10 +146,73 @@ print(get_intersection_node(a1, b1).data)
 # Time: O(n + m)
 # Space: O(1)
 
-prev = None
-current = head
-while current:
-    next_node = current.next
-    current.next = prev
-    prev = current
-    current = next_node
+# prev = None
+# current = head
+# while current:
+#     next_node = current.next
+#     current.next = prev
+#     prev = current
+#     current = next_node
+
+# The clue for this row is
+# Type of animal known for growing antlers
+# Input : 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
+# k = 3
+# Output : 3 → 2 → 1 → 6 → 5 → 4 → 7 → 8
+
+# High-Level Plan
+# For each group:
+
+# 1️⃣ Check if k nodes exist
+# 2️⃣ Reverse those k nodes
+# 3️⃣ Connect previous part to reversed part
+# 4️⃣ Move to next group
+
+def reverse_k_group(head, k):
+    dummy = Node(0)
+    dummy.next = head
+    group_prev = dummy
+
+    while True:
+        # Step 1: Find kth node
+        kth = group_prev
+        for _ in range(k):
+            kth = kth.next
+            if not kth:
+                return dummy.next
+        group_next = kth.next
+
+        # Step 2: Reverse Group
+        prev = group_next
+        curr = group_prev.next
+
+        while curr != group_next:
+            temp = curr.next
+            curr.next = prev
+            prev = curr
+            curr = temp
+        
+        # Step 3 : Reconnect
+        temp = group_prev.next
+        group_prev.next = kth
+        group_prev = temp
+
+a1 = Node(1)
+a2 = Node(2)
+a3 = Node(3)
+a4 = Node(4)
+a5 = Node(5)
+a6 = Node(6)
+a7 = Node(7)
+
+a1.next = a2
+a2.next = a3
+a3.next = a4
+a4.next = a5
+a5.next = a6
+a6.next = a7
+
+head = a1
+
+reverseNode = reverse_k_group(head, 3)
+print_list(reverseNode)
